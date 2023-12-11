@@ -1,0 +1,37 @@
+
+ import menstapered from "../../assets/Mens_Tapered.jpg";
+ import mensstraight from "../../assets/Mens_Straight.jpg";
+ import mensbootcut from "../../assets/Mens_Bootcut.jpg";
+import ItemCard from "./itemCard";
+
+ function RowTwo() {
+  return (
+    <div className="z-10">
+      <div className="pb-5 ">
+        <div className="   ">
+          <div className=" text-slate-900 text-4xl font-bold  flex items-center justify-center mb-10">
+ <h1>Jeans</h1> 
+          </div>
+            <div className="flex items-center pt-3 px-3 gap-8  min-w-full overflow-x-auto  scrollbar-track-white scrollbar-thin scrollbar-thumb-slate-400 scrollbar-rounded-full">
+            <ItemCard imgUrl={mensbootcut}/>
+            <ItemCard imgUrl={menstapered}/>
+
+            <ItemCard imgUrl={mensstraight}/>
+
+            <ItemCard imgUrl={mensbootcut}/>
+
+            <ItemCard imgUrl={menstapered}/>
+
+            <ItemCard imgUrl={mensstraight}/>
+            <ItemCard imgUrl={mensbootcut}/>
+ 
+            </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  );
+ }
+
+export default RowTwo;

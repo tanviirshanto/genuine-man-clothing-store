@@ -1,0 +1,102 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.top-18{
+top: 65px;
+right:30px;
+width: 300px;
+}
+
+.maxhw {
+    max-width: 300px;
+    max-height:  380px ;
+}
+
+.shadow-left {
+    box-shadow: -10px 0 20px -5px rgba(115,115,115,0.75);
+}
+
+.shadow-bottom{
+    box-shadow: 0 4px 2px -4px gray;
+}
+
+.shadow-null{
+    box-shadow: -0px 0 0px -0px rgba(115,115,115,0.75);
+}
+
+
+.sbar {
+    width: 0%;
+    height: 100%;
+    background: black;
+    box-shadow: -10px 0 15px -5px rgba(115,115,115,0.75);
+    
+  }
+
+  .sidebarhover{
+    width: 100px;background: red;
+  }
+
+
+.itsvisible{
+    right:0px
+}
+
+.notVisible{
+    right:-900px
+}
+
+.buttonpos{
+top:0;
+left:0
+}
+
+
+
+.sidebarsize{
+    width: 500px;
+    height:800px;
+} 
+
+
+
+
+
+/* ::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-track{
+    background: black;
+    width: 7px;
+}
+*/
+::-webkit-scrollbar-thumb{
+    
+    border-radius: 10px;
+
+} 
+
+.stickybar{
+    position: sticky;
+    top:0;
+    z-index: 10;
+}
+
+
+.cartzindex{
+    z-index:40 ;
+}
+.sidebarz{
+z-index: 11;
+}
+
+
+
+
+
+.scrollbar-thin::-webkit-scrollbar-track {
+    border-radius: 20px
+}
