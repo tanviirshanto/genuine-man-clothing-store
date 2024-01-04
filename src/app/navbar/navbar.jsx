@@ -1,23 +1,28 @@
-
+'use client'
 // import Cart from './cart'
 // import CartButton from './cartbutton'
 //      import CartShow from './Sidebar/cartshow'
 import Menu from '../../components/navbar/menu'
 // import MainSidebar from './Sidebar/sidebar'
 // import Searchbox from './searchbox'
-import Signin from '../../components/navbar/signin'
-import Signup from '../../components/navbar/signup'
+import Login from '../../components/navbar/login'
+import Register from "../../components/navbar/register";
 
 import CartView from '../../components/navbar/cartview'
 import Categories from '../../components/navbar/categories'
 import Image from 'next/image'
 
- import Cottons4 from '../../../public/Cottons4.svg'
+import Cottons4 from '../../../public/Cottons4.svg'
+ 
+import { useSession, signOut } from "next-auth/react";
 
 function Navbar() {
+ const { data: session } = useSession();
+ 
+  // console.log(session)
   return (
     <div className=' bg-slate-50 shadow-md'>
-    <div className="   flex justify-between items-center  w-[92%] mx-auto py-1 whitespace-nowrap h-16">
+    <div className="   flex justify-between items-center  w-[92%] mx-auto py-1 whitespace-nowrap h-14">
         <div className='flex items-center'>
             <Menu/>
             <div>
@@ -31,11 +36,13 @@ function Navbar() {
   height="0" src="Cottons4.svg" width={150} className=' inline '  alt="" /></a>
         </div>
         <div className='flex items-center'>
-          <CartView/>
-        <Signin/><Signup/>
+          <CartView />
+          {session?<div className='flex gap-3'><p className='font-bold'>Hi {session?.user?.name}</p>
+        <button onClick={() => signOut()}>Sign Out</button></div>: <div className='flex'><Login/><Register/></div> }
+        
         {/* <MainSidebar/> */}
        
-        
+       
 
         </div>
         {/* <!-- drawer component --> */}

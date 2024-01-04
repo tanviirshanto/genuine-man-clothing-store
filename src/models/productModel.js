@@ -39,7 +39,7 @@ const productSchema = new mongoose.Schema({
     }
 
   ],
-  color: {
+  color: [{
     name: {
       type: String,
       required: [true, "Please provide product color"],
@@ -47,7 +47,7 @@ const productSchema = new mongoose.Schema({
       type: String,
       required: [true, "Please provide product color code"],
     
-  }}},
+  }}}],
 
   rating: {
     count: Number,

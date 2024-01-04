@@ -105,7 +105,7 @@ export const prod = [
     discount: 15,
   },
   {
-    name: "551™ Z AUTHENTIC STRAIGHT FIT MEN'S JEANS",
+    name: "505™ REGULAR FIT MEN'S JEANS0",
     clothtype: "Pants",
     variation: "Jeans",
     images: [jp2,jp3,jp4,jp6,jp7,jp10],
@@ -160,3 +160,47 @@ export const prod = [
     discount: 15,
   },
 ];
+
+
+//  {
+//     color: { name: 'black' },
+//     rating: { reviewers: [] },
+//     _id: '6571dd1ff1f83cb4e9875b3c',
+//     name: "551™ Z AUTHENTIC STRAIGHT FIT MEN'S JEANS",
+//     clothtype: 'Pants',
+//     variation: 'Jeans',
+//     images: [
+//         'https://res.cloudinary.com/djpdlgir9/image/upload/v1/cottons/jeans/ml0kurxci63g0xkkeqjz?_a=BATAUVP80',
+//         'https://res.cloudinary.com/djpdlgir9/image/upload/v1/cottons/jeans/r25iligjxnlbsom8u1kg?_a=BATAUVP80',
+//         'https://res.cloudinary.com/djpdlgir9/image/upload/v1/cottons/jeans/yjli34x0sflropn6icnj?_a=BATAUVP80',
+//         'https://res.cloudinary.com/djpdlgir9/image/upload/v1/cottons/jeans/mm25atwufxr9errnpx7o?_a=BATAUVP80',
+//         'https://res.cloudinary.com/djpdlgir9/image/upload/v1/cottons/jeans/qxecrbl3xgxdgdxcilsp?_a=BATAUVP80',
+//         'https://res.cloudinary.com/djpdlgir9/image/upload/v1/cottons/jeans/ghehutrreuvjvxohiqqq?_a=BATAUVP80'
+//     ],
+//     sizes: [
+//         {
+//             size: '30',
+//             quantity: 8,
+//             _id: '6571dd1ff1f83cb4e9875b3d'
+//         },
+//         {
+//             size: '31',
+//             quantity: 10,
+//             _id: '6571dd1ff1f83cb4e9875b3e'
+//         },
+//         {
+//             size: '32',
+//             quantity: 20,
+//             _id: '6571dd1ff1f83cb4e9875b3f'
+//         },
+//         {
+//             size: '33',
+//             quantity: 15,
+//             _id: '6571dd1ff1f83cb4e9875b40'
+//         },
+//         {
+//             size: '34',
+//             quantity: 7,
+//             _id: '6571dd1ff1f83cb4e9875b41'
+//             }]
+//     }

@@ -100,3 +100,62 @@ z-index: 11;
 .scrollbar-thin::-webkit-scrollbar-track {
     border-radius: 20px
 }
+
+
+
+/* Container holding the scrollable content */
+.scroll-container {
+    
+    position: relative;
+    border-radius: 10px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* Hide scrollbar by default */
+    
+    /* Adjust margin as needed */
+}
+
+/* Scrollable content */
+.scroll-content {
+    width: calc(100% - 20px);
+    /* Adjust width to account for margin */
+    height: calc(100% - 20px);
+    /* Adjust height to account for margin */
+    padding: 8px;
+    /* Padding to separate content from scrollbar */
+    box-sizing: border-box;
+    overflow-y: hidden;
+    /* Hide content overflow initially */
+}
+
+/* Show scrollbar on hover */
+.scroll-container:hover .scroll-content {
+    overflow-y: auto;
+}
+
+/* Custom scrollbar */
+.scroll-content::-webkit-scrollbar {
+    width: 8px;
+    
+    /* Set the width of the scrollbar */
+}
+
+.scroll-content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Track color */
+    border-radius: 8px;
+    display: none;
+    /* Rounded corners for the track */
+}
+
+.scroll-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Thumb color */
+    border-radius: 8px;
+    /* Rounded corners for the thumb */
+}
+
+/* Hide scrollbar buttons (arrows) */
+.scroll-content::-webkit-scrollbar-button {
+    display: none;
+}

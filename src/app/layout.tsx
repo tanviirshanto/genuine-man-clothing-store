@@ -18,9 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <script src="http://localhost:8097" async/>
       <body className={inter.className}>
-        
-        <GlobalContextProvider>{children}</GlobalContextProvider></body>
+        <GlobalContextProvider>
+          <Navbar />
+          {children}
+        </GlobalContextProvider>
+      </body>
     </html>
-  )
+  );
 }

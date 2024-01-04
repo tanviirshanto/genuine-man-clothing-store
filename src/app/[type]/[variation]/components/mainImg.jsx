@@ -14,7 +14,8 @@ const {displayImage,setDisplayImage}=useGlobalContext()
 
   return (
     
-      <div className="order-2 flex justify-center " >
+      <div className="order-2 flex justify-center 
+      h-[800px] " >
       
       <Image src={displayImage} width={900} height={500} alt="Your Image"  />
      

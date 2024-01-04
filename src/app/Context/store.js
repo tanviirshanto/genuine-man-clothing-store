@@ -1,7 +1,8 @@
 "use client";
 import { createContext, useState, useContext, useEffect } from "react";
-
-import OneBack from '../../assets/oneBack.jpg'
+import { SessionProvider } from 'next-auth/react'
+import { Provider } from "react-redux";
+import store from '../../redux/store'
 
 const GlobalContext = createContext(
     
@@ -11,7 +12,10 @@ export const GlobalContextProvider = ({ children }) => {
   const [displayImage, setDisplayImage] = useState("");
   return (
     <GlobalContext.Provider value={{ displayImage, setDisplayImage }}>
-      {children}
+       <Provider store={store}><SessionProvider> {children}
+   
+</SessionProvider></Provider>
+      
     </GlobalContext.Provider>
   );
 };

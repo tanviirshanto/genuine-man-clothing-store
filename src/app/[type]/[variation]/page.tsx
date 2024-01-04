@@ -1,3 +1,4 @@
+'use client'
 import Star from "./components/star";
 import Color from "./components/color";
 import SizeChart from "./components/size";

@@ -9,22 +9,22 @@ import Image from 'next/image';
 import { connect } from '../dbConfig/dbConfig';
 import Product from '@/models/productModel';
 
-
+connect()
 
 let i=0
 
 const myImage = cld.image('cottons/casualshirt/remtvgwxmltkjyjhltdw').toURL()
 
 export async function GetProducts() {
-  connect()
-  const p=await Product.findOne({variation:"Jeans"})
-  console.log(p)
+  
+  const p = await Product.find({ variation: "Jeans" })
+  
   return p
   
 }
 
 async function Home() {
-  const ps=await GetProducts()
+  const jeans = await GetProducts();
   return (
     <div className=''>
     <div className=' text-center  h-screen  '>
@@ -34,7 +34,7 @@ async function Home() {
       </div>
 
     </div>
-    <RowTwo/>
+    <RowTwo jeans={jeans} />
     <RowThree/>
     
 <div>{/* <AdvancedImage cldImg={myImage} /> */}
