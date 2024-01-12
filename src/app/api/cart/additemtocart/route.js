@@ -43,6 +43,7 @@ export  async function POST(request, response) {
     // Check if the item already exists in the cart
     const existingItemIndex = userCart.items.findIndex((item) => {
       console.log(item.id.toString(), item_id.toString());
+      
       return item.id.toString() === item_id.toString();
     });
     console.log(existingItemIndex);
@@ -66,9 +67,7 @@ export  async function POST(request, response) {
       userCart.items.push(newItem);
     }
   }
-    // Calculate total_amount based on the items in the cart (if needed)
 
-    // Save the updated cart
     await userCart
       .save()
       .then((userCart) => {
@@ -80,23 +79,7 @@ export  async function POST(request, response) {
         // Handle error
       });
 
-    // return response
-    //   .status(200)
-    //   .json({ message: "Item added to cart successfully" });
      return NextResponse.json(userCart);
-  // } catch (error) {
-  //   // return response.status(500).json({ error: "Internal server error" });
-  //   return NextResponse.json(
-  //     { error: "Internal server error" },
-  //     { status: 500 }
-  //   );
-  // }
+
 }
 
-// export async function PUT(requestuest: any, { params }: any) {
-//   const { userId } = params;
-//   const { newTitle: title, newDescription: description } = await requestuest.json();
-//   await connect();
-//   await Cart.findByIdAndUpdate({ _id: userId }, { title, description });
-//   return Nextresponseponse.json({ message: "Topic updated" }, { status: 200 });
-// }

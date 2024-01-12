@@ -40,7 +40,7 @@ function ViewProduct({ params }: any) {
     fetch(`http://localhost:3000/api/product/${params.id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         setItem(data.p);
         setLoading(false);
         //initially we set cart item from the item loaded

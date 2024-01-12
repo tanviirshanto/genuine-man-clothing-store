@@ -24,17 +24,6 @@ const [user_id, setUserId] = useState(null);
     (state) => state.cart
   );
   const { items, total_amount } = data;
-  // useEffect(() => {
-  //   // Fetch data from local storage
-  //   const dataFromLocalStorage = JSON.parse(
-  //     localStorage.getItem("cart")
-  //   );
-
-  //   if (dataFromLocalStorage) {
-  //     // Dispatch action to update Redux state with data from local storage
-  //     dispatch(setData(dataFromLocalStorage));
-  //   }
-  // }, [dispatch]);
 
   useEffect(() => {
     // If session is available and user_id is not set
@@ -66,12 +55,28 @@ const [user_id, setUserId] = useState(null);
   //   }
   // }, [user_id]);
 
-useEffect(() => {
+  useEffect(() => {
+    if (!session) {
+      const datafromlocalstorage = localStorage.getItem("cartItems");
+
+      if (datafromlocalstorage !== "undefined") {
+        dispatch(setData(JSON.parse(datafromlocalstorage)));
+
+      }
+    }
+  }, []);
+  
+
+  useEffect(() => {
+  if(session)
   dispatch(fetchCartItems({ user_id }));
 }, [user_id]);
 
   
-    let content = null;
+  let content = null;
+  
+
+  if (session) {
     if (isLoading) content = <p>Loading...</p>;
 
     if (!isLoading && isError)
@@ -81,17 +86,19 @@ useEffect(() => {
       content = items?.map((i) =>
               {
                 //  console.log(i);
-                return (
-                <SidebarItem
-                  item={i}
-                  key={i._id}
-                />
-              )})
+                return <SidebarItem item={i} key={i._id} user_id={user_id} />;})
     }
 
     if (!isLoading && !isError && items?.length === 0) {
       content = <p>No transactions found!</p>;
     }
+  }
+  else {
+    content = items?.map((i) => {
+      //  console.log(i);
+      return <SidebarItem item={i} key={i._id}  />;
+    });
+  }
 
   return (
     <div className="group">
@@ -100,12 +107,15 @@ useEffect(() => {
           className="cartzindex hover:text-slate-50 pr-3 md:text-lg font-medium flex items-center"
           href={`/cart`}
         >
-          
           <FaCartShopping />
-        
         </a>
       </div>
-      <div className="sidebarz sbar md:group-hover:w-[550px]  group-hover:transition-all  absolute group-hover:duration-500 right-0 top-0 overflow-hidden ">
+      <div
+        className="sidebarz sbar md:group-hover:w-[550px]  group-hover:transition-all  absolute group-hover:duration-500 right-0 top-0 overflow-hidden z-100"
+        style={{
+          
+        }}
+      >
         <div className="relative  pt-8 flex flex-col justify-between text-slate-50 h-[95%] pl-5 pr-1">
           <div className="text-slate-50 ">
             <div className="flex justify-center items-center">
@@ -122,10 +132,8 @@ useEffect(() => {
               Lorem ipsum dolor sit amet consectetur adipisicing.
             </div>
 
-            <div className="overflow-y-scroll overflow-x-hidden  whitespace-nowrap h-[400px] w-[90%] mx-auto scrollbar-track-white scrollbar-thin scrollbar-thumb-slate-400 ">
-             
-             
-             {content}
+            <div className="overflow-y-scroll overflow-x-hidden  whitespace-nowrap h-[600px] w-[90%] mx-auto scrollbar-track-white scrollbar-thin scrollbar-thumb-slate-400 ">
+              {content}
               {/* {cartItems?.map((i) =>
               {
                 //  console.log(i);
@@ -140,15 +148,12 @@ useEffect(() => {
 
               <SidebarItem imgUrl={menstapered} />
               <SidebarItem imgUrl={menstapered} /> */}
-
-
-              
             </div>
           </div>
           <div className="w-[90%] items-end my-5">
             <div className="flex justify-between font-semibold mb-5">
               <h1>Estimated Total</h1>
-              <h1>{ total_amount }</h1>
+              <h1>${session ? total_amount : ""}</h1>
             </div>
             <button className="bg-slate-50 text-slate-950 w-full py-3 font-bold">
               <a href={`/cart`}>Check Out</a>{" "}

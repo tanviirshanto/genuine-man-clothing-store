@@ -16,40 +16,63 @@ import Cottons4 from '../../../public/Cottons4.svg'
  
 import { useSession, signOut } from "next-auth/react";
 
+import FavouritesView from "../../components/navbar/showfavourite";
+
 function Navbar() {
  const { data: session } = useSession();
  
   // console.log(session)
   return (
-    <div className=' bg-slate-50 shadow-md'>
-    <div className="   flex justify-between items-center  w-[92%] mx-auto py-1 whitespace-nowrap h-14">
-        <div className='flex items-center'>
-            <Menu/>
-            <div>
-            <a href="/" className='inline mr-10'> <Image
-  height={0} width={0} src={Cottons4}  className=' inline w-[150px] ' alt="" /> </a>
-            </div>
-            <Categories/>
+    <div className=" bg-slate-50 shadow-md   ">
+      <div className="   flex justify-between items-center  w-[92%] mx-auto py-1 whitespace-nowrap ">
+        <div className="flex items-center">
+          <Menu />
+          <div>
+            <a href="/" className="inline mr-10">
+              {" "}
+              <Image
+                height={0}
+                width={0}
+                src={Cottons4}
+                className=" inline w-[150px] "
+                alt=""
+              />{" "}
+            </a>
+          </div>
+          <Categories />
         </div>
-        <div className='hidden'>
-        <a href="/"><Image 
-  height="0" src="Cottons4.svg" width={150} className=' inline '  alt="" /></a>
+        <div className="hidden">
+          <a href="/">
+            <Image
+              height="0"
+              src="Cottons4.svg"
+              width={150}
+              className=" inline "
+              alt=""
+            />
+          </a>
         </div>
-        <div className='flex items-center'>
+        <div className="flex items-center">
+          <FavouritesView />
           <CartView />
-          {session?<div className='flex gap-3'><p className='font-bold'>Hi {session?.user?.name}</p>
-        <button onClick={() => signOut()}>Sign Out</button></div>: <div className='flex'><Login/><Register/></div> }
-        
-        {/* <MainSidebar/> */}
-       
-       
+          {session ? (
+            <div className="flex gap-3">
+              <p className="font-bold">Hi {session?.user?.name}</p>
+              <button onClick={() => signOut()}>Sign Out</button>
+            </div>
+          ) : (
+            <div className="flex">
+              <Login />
+              <Register />
+            </div>
+          )}
 
+          {/* <MainSidebar/> */}
         </div>
         {/* <!-- drawer component --> */}
-
-
-    </div></div>
-  )
+      </div>
+    </div>
+  );
 }
 
 export default Navbar
