@@ -9,7 +9,7 @@ import User from '../../../../models/userModel';
 connect();
 
 
-export const authOptions = {
+ const authOptions = {
   providers: [
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_ID,
