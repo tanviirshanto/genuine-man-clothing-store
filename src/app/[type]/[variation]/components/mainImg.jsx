@@ -1,10 +1,10 @@
 'use client'
-import useGlobalContext from '@/app/Context/store'
+import useGlobalContext from '../../../Context/store'
 import Image from 'next/image'
 // import './Magnifier.css';
 import React, { useEffect,useRef } from 'react';
 
-import OneBack from '../assets/OneBack.jpg'
+
 
 function MainImg({firstImage}) {
 const {displayImage,setDisplayImage}=useGlobalContext()

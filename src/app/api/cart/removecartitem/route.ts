@@ -1,4 +1,4 @@
-import Cart from "@/models/CartModel";
+import Cart from "../../../../models/cartModel";
 import { NextRequest, NextResponse } from "next/server";
 import { connect } from "../../../../dbConfig/dbConfig";
 

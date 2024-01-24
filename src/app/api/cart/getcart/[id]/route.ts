@@ -1,5 +1,5 @@
-import { connect } from "@/dbConfig/dbConfig";
-import Cart from "@/models/cartModel";
+import { connect } from "../../../../../dbConfig/dbConfig";
+import Cart from "../../../../../models/cartModel";
 import console from "console";
 import { NextResponse } from "next/server";
 

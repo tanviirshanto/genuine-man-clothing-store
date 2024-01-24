@@ -1,5 +1,5 @@
-import { connect } from "@/dbConfig/dbConfig";
-import Favourite from "@/models/FavouriteModel";
+import { connect } from "../../../../../dbConfig/dbConfig";
+import Favourite from "../../../../../models/favouriteModel";
 import { NextResponse } from "next/server";
 
 connect();

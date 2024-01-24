@@ -1,5 +1,5 @@
-import { connect } from "@/dbConfig/dbConfig";
-import Product from "@/models/productModel";
+import { connect } from "../../../../dbConfig/dbConfig";
+import Product from "../../../../models/productModel";
 import { NextResponse } from "next/server";
 
 connect();

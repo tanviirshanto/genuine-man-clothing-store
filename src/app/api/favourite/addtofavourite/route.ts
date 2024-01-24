@@ -1,4 +1,4 @@
-import Favourite from "@/models/FavouriteModel";
+import Favourite from "../../../../models/favouriteModel";
 import { NextRequest, NextResponse } from "next/server";
 import { connect } from "../../../../dbConfig/dbConfig";
 
