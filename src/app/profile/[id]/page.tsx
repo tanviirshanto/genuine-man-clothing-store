@@ -4,13 +4,13 @@ import Order from "@/models/orderModel";
 
 import Index from "../../../components/profile/index";
 
-export async function GetUser(id:string) {
+async function GetUser(id:string) {
   const p = await User.findOne({_id:id});
 
   return p;
 }
 
-export async function GetOrder(userid:string) {
+async function GetOrder(userid:string) {
   const p = await Order.findOne({ user_id: userid });
 console.log(p.orders);
   return p.orders.toObject();

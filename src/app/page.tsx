@@ -25,7 +25,7 @@ let i=0
 
 const myImage = cld.image('cottons/casualshirt/remtvgwxmltkjyjhltdw').toURL()
 
-export async function GetProducts() {
+async function GetProducts() {
   
   const p = await Product.find()
   
