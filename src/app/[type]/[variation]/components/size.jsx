@@ -3,21 +3,21 @@ import React, { useState, useEffect } from "react";
 
 
 
-function SizeChart({ id, setCartItem, cartItem }) {
+function SizeChart({sizes, id, setCartItem, cartItem }) {
   const [data, setData] = useState(null);
   const [active, setActive] = useState(null);
-  const [isLoading, setLoading] = useState(true);
+  // const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    fetch(`http://localhost:3000/api/product/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-        // console.log(data);
-      });
-  }, []);
+  //   fetch(`http://localhost:3000/api/product/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data);
+  //       setLoading(false);
+  //       // console.log(data);
+  //     });
+  // }, []);
 
   useEffect(
     () => {
@@ -32,14 +32,14 @@ function SizeChart({ id, setCartItem, cartItem }) {
      console.log(cartItem)
   }
  
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  // if (isLoading) return <p>Loading...</p>;
+  // if (!data) return <p>No profile data</p>;
   return (
     <div className="">
       <h1 className="mb-4 font-bold">Size</h1>
 
       <div className="flex justify-start  gap-4  columns-3 flex-wrap ">
-        {data.p.sizes.map((s) => (
+        {sizes.map((s) => (
           <button
             className={`basis-[12%] py-1  text-sm border-[1px] border-slate-300 rounded ${
               active?.size === s.size ? "border-slate-900 border-2" : ""

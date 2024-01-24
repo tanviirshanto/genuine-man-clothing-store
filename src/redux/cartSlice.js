@@ -1,6 +1,6 @@
 import Quantity from "@/app/[type]/[variation]/components/quantity";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { isError } from "util";
+
 import {
   deleteCartItem,
   getCartItems
@@ -44,14 +44,14 @@ const cartSlice = createSlice({
   reducers: {
     addtocart(state, action) {
 
-      const itemToAdd = action.payload.cartItem;
-      
-      const existingItem = state.data.items.find(
-        (item) => item.item_id === itemToAdd.item_id
-      );
-      console.log(itemToAdd);
+      const itemToAdd = action?.payload?.cartItem;
+      console.log(action)
+const existingItem = state.data.items.find(
+  (item) => item.item_id === itemToAdd?.item_id
+) || null;
+      console.log(existingItem);
       if (existingItem) {
-        existingItem.quantity = existingItem.quantity + itemToAdd.quantity;
+        existingItem.quantity = existingItem.quantity + itemToAdd?.quantity;
       } else state.data.items.push(action.payload.cartItem);
 
       if (action.payload.session===null) {

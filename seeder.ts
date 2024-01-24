@@ -3,7 +3,7 @@
 import Product from "./src/models/productModel";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { prod } from "./src/data/data";
+import { prod } from "./src/data/data2";
 
 dotenv.config({ path: __dirname + "/.env.local" });
 // console.log(process.env.MONGODB_URI);
@@ -16,7 +16,7 @@ mongoose
 const importData = async () => {
     try {
       // delete previous data | avoid duplication
-      await Product.deleteMany();
+      // await Product.deleteMany();
   
       await Product.insertMany(prod);
   

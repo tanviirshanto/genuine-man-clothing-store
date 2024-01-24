@@ -42,7 +42,7 @@ cartSchema.virtual("items.subTotal").get(function () {
   return this.items.reduce(
     (total, item) => total + item.quantity * item.price,
     0
-  );
+  ).toFixed(2);
 });
 
 // Ensure the virtual property is included when converting the document to JSON
@@ -50,10 +50,9 @@ cartSchema.set("toJSON", { virtuals: true });
 
 cartSchema.pre("save", function (next) {
   // Calculate total based on the sum of subtotals of all items
-  const totalAmount = this.items.reduce(
-    (total, item) => total + item.quantity * item.price,
-    0
-  );
+  const totalAmount = this.items
+    .reduce((total, item) => total + item.quantity * item.price, 0)
+    .toFixed(2);
     console.log(totalAmount);
   // Assign the calculated total to the total_amount field
   this.total_amount = totalAmount;

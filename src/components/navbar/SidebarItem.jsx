@@ -23,19 +23,23 @@ function SidebarItem({ item, user_id }) {
 
   // console.log(item)
   return (
-    <div className="pr-2 w-[400px]">
-      <div className="flex  mt-5 gap-3 items-start ">
+    <div className="pr-2 md:w-[400px]">
+      <div className="flex  mt-5 mb-3 gap-3 items-center ">
         <div className="w-[30%]">
-          <a href={`/${clothtype}/${variation}/${name}/${id}`}><Image
-            width={300}
-            height={400}
-            src={item.image}
-            className=" w-full "
-            alt=""
-          /></a>
+          <a href={`/${clothtype}/${variation}/${name}/${id}`}>
+            <Image
+              width={300}
+              height={400}
+              src={item.image}
+              className=" w-full "
+              alt=""
+            />
+          </a>
         </div>
-        <div className="flex flex-col text-wrap w-[60%]">
-          <a href={`/${clothtype}/${variation}/${name}/${id}`}><h1 className="overflow-clip">{item.name}</h1></a>
+        <div className="flex flex-col text-wrap w-[60%] text-sm">
+          <a href={`/${clothtype}/${variation}/${name}/${id}`}>
+            <h1 className="overflow-clip hover:text-blue-500 ">{item.name}</h1>
+          </a>
           <h1 className="text-slate-400 mt-1">Take a hint - Black</h1>
           <div className="flex mt-1">
             <h1 className="">${item.price}</h1>{" "}
@@ -56,12 +60,13 @@ function SidebarItem({ item, user_id }) {
             </h1>
           </div>
           <div>
-            <button className="underline text-slate-200" onClick={handleRemove}>
+            <button className="underline text-slate-200 hover:text-red-600" onClick={handleRemove}>
               Remove
             </button>
           </div>
         </div>
       </div>
+      <hr />
     </div>
   );
 }

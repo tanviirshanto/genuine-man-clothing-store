@@ -53,7 +53,7 @@ function Favourites({ cartItem, user_id }) {
 
   return (
     <button
-      className="mr-5 w-[15%] border border-slate-300 hover:bg-black"
+      className="mr-5 w-[15%] border border-slate-300 hover:bg-black ml-2 md:ml-0"
       onClick={addToFavouriteItems}
     >
       ❤️

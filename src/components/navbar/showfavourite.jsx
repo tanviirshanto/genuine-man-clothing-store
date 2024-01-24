@@ -63,13 +63,7 @@ const items = data ? data.items : [];
         <div
           className={`${
             isVisible ? "" : "invisible"
-          } absolute bg-slate-100 px-1 py-2 flex flex-col rounded-lg text-center border shadow-md gap-5 w-[400px]`}
-          style={{
-            position: "absolute",
-            top: "180%", 
-            left: "50%", 
-            transform: "translateX(-50%)", 
-          }}
+          } absolute bg-slate-100 px-1 py-2 flex flex-col rounded-lg text-center border shadow-md gap-5 w-[300px] top-[180%] right-[-65%]`}
         >
           {content}
         </div>

@@ -5,7 +5,8 @@ import User from '../../../models/userModel'
 
 
 connect();
-export async function POST(request){
+export async function POST(request) {
+
   const body = await request.json();
   
     const { name, email, password } = body;
@@ -30,16 +31,19 @@ export async function POST(request){
             email,
             password:hashedPassword
         }
-        const newUser = new User(userData);
+  const newUser = new User(userData);
+  
         newUser.save()
   .then((savedUser) => {
     console.log('User saved:', savedUser);
+  //  return NextResponse.redirect("http://localhost:3000/login");
     // Handle successful save
+    
   })
   .catch((error) => {
     console.error('Error saving user:', error);
     // Handle error
   });
 
-    return NextResponse.json(result)
+    return NextResponse.json("Finished")
 }

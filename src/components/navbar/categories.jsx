@@ -3,8 +3,8 @@
 function Categories() {
   return (
 
-        <div className="flex  items-center  gap-10 ">
-          
+        <div className="  items-center  gap-10 hidden md:flex text-sm">
+        
           <div className="group flex items-center relative">
           
           <a href="" className="font-semibold">Shirts</a>

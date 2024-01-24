@@ -21,24 +21,23 @@ function SideImages({ images }) {
   // const imgOnMd = "md:w-[90%] md:h-[15%]";
   
   return (
-    <div className="scroll-container">
-      <div className="flex flex-row  justify-between md:justify-start md:flex-col  order-3 overflow-x-scroll md:overflow-x-hidden md:overflow-y-scroll max-w-[100%] whitespace-nowrap  px-2 md:px-0 md:order-1 md:h-[800px]   scroll-content ">
-        <div className="md:mr-4 ">
+    <div className="scroll-container order-3 md:order-1">
+      <div className="  overflow-x-scroll md:overflow-x-hidden md:overflow-y-scroll  whitespace-nowrap  md:h-[800px]   scroll-content ">
+        <div className="flex flex-row  justify-between md:justify-start md:flex-col max-w-[100%] md:mr-4">
           {images?.map((i) => (
-          <Image
-            width={200}
-            height={250}
-            src={i}
-            alt=""
-            className={`hover:border-2 hover:border-slate-900 ${
-              displayImage === i ? "border-2 border-slate-900" : ""
-            } md:mb-4 `}
-            onClick={() => imgOnClickHandler(i)}
-            key={i}
-          />
-        ))}
+            <Image
+              width={200}
+              height={250}
+              src={i}
+              alt=""
+              className={`hover:border-2 hover:border-slate-900  md:w-full ${
+                displayImage === i ? "border-2 border-slate-900" : ""
+              } md:mb-4 mr-3`}
+              onClick={() => imgOnClickHandler(i)}
+              key={i}
+            />
+          ))}
         </div>
-        
       </div>
     </div>
   );

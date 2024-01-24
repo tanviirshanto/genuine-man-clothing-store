@@ -11,19 +11,21 @@ import { fetchCartItems, setData } from "@/redux/cartSlice";
 
 function CartView() {
   const { data: session } = useSession();
-  
-  // let user_id = "6579f7a87b7a6c3809d42a4d"
-  // console.log(user_id)session?.user?.id;
-  // const cartItems = useSelector((state) => state.cart.data);
-const [user_id, setUserId] = useState(null);
+
+  const [user_id, setUserId] = useState(null);
   const [cartData, setCartData] = useState(null)
   // console.log(cartItems)
   const dispatch = useDispatch();
   
+
   const { data, isLoading, isError } = useSelector(
     (state) => state.cart
   );
-  const { items, total_amount } = data;
+  const { items=[], total_amount } = data || {};
+
+
+const [isOpen, setIsOpen] = useState(false);
+
 
   useEffect(() => {
     // If session is available and user_id is not set
@@ -36,24 +38,7 @@ const [user_id, setUserId] = useState(null);
     }
   }, [session, user_id]);
   
-  // Run the effect when session or user_id changes
 
-  // useEffect(() => {
-  //   // Fetch cart data when user_id is available
-  //   if (user_id) {
-  //     const fetchData = async () => {
-  //       try {
-  //         // console.log(user_id);
-  //         const response = await axios.get(`/api/cart/getcart/${user_id}`);
-  //         setCartData(response.data.p);
-  //         // console.log(cartData)
-  //       } catch (err) {
-  //         console.error("Error fetching data:", err);
-  //       }
-  //     };
-  //     fetchData();
-  //   }
-  // }, [user_id]);
 
   useEffect(() => {
     if (!session) {
@@ -99,27 +84,35 @@ const [user_id, setUserId] = useState(null);
       return <SidebarItem item={i} key={i._id}  />;
     });
   }
-
+const forcartview = "transition-all w-[550px] duration-500";
   return (
     <div className="group">
       <div>
-        <a
-          className="cartzindex hover:text-slate-50 pr-3 md:text-lg font-medium flex items-center"
-          href={`/cart`}
+        <button className="cartzindex hover:text-slate-50  md:text-lg font-medium  items-center  top-10 right-10 hidden md:block ">
+          <FaCartShopping />
+        </button>
+        <button
+          className="cartzindex hover:text-slate-50  md:text-lg font-medium  items-center  top-10 right-10 flex md:hidden "
+          onClick={() => setIsOpen(!isOpen)}
         >
           <FaCartShopping />
-        </a>
+        </button>
       </div>
       <div
-        className="sidebarz sbar md:group-hover:w-[550px]  group-hover:transition-all  absolute group-hover:duration-500 right-0 top-0 overflow-hidden z-100"
-        style={{
-          
-        }}
+        className={`cartzindex sbar md:group-hover:w-[550px]  group-hover:transition-all h-screen absolute group-hover:duration-500 right-0 top-0 overflow-hidden ${
+          isOpen ? "sbarOpen" : ""
+        }`}
       >
-        <div className="relative  pt-8 flex flex-col justify-between text-slate-50 h-[95%] pl-5 pr-1">
+        <div className="relative  pt-8 flex flex-col justify-between text-slate-50 h-[95%] pl-5 pr-1 object-contain">
           <div className="text-slate-50 ">
             <div className="flex justify-center items-center">
-              <a href="/cart" className="mr-14">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="md:mr-14 md:hidden"
+              >
+                <FaCartShopping />
+              </button>
+              <a href={`/cart`} className="md:mr-14 hidden md:block">
                 <FaCartShopping />
               </a>
             </div>
@@ -128,35 +121,21 @@ const [user_id, setUserId] = useState(null);
                 <a href={`/cart`}>Your bag</a>{" "}
               </h1>{" "}
             </div>
-            <div className="mt-5 mb-3">
+            <div className="mt-5 mb-3 whitespace-normal">
               Lorem ipsum dolor sit amet consectetur adipisicing.
             </div>
 
-            <div className="overflow-y-scroll overflow-x-hidden  whitespace-nowrap h-[600px] w-[90%] mx-auto scrollbar-track-white scrollbar-thin scrollbar-thumb-slate-400 ">
+            <div className="overflow-y-scroll overflow-x-hidden  whitespace-nowrap h-[70%] w-[90%] mx-auto scrollbar-track-white scrollbar-thin scrollbar-thumb-slate-400 ">
               {content}
-              {/* {cartItems?.map((i) =>
-              {
-                //  console.log(i);
-                return (
-                <SidebarItem
-                  item={i}
-                  key={i._id}
-                />
-              )})} */}
-              {/* <SidebarItem imgUrl={menstapered} />
-              <SidebarItem imgUrl={menstapered} />
-
-              <SidebarItem imgUrl={menstapered} />
-              <SidebarItem imgUrl={menstapered} /> */}
             </div>
           </div>
-          <div className="w-[90%] items-end my-5">
-            <div className="flex justify-between font-semibold mb-5">
+          <div className="w-[90%] items-end ">
+            <div className="flex justify-between font-semibold ">
               <h1>Estimated Total</h1>
               <h1>${session ? total_amount : ""}</h1>
             </div>
             <button className="bg-slate-50 text-slate-950 w-full py-3 font-bold">
-              <a href={`/cart`}>Check Out</a>{" "}
+              <a href={`/cart`}>Go to Order Page</a>{" "}
             </button>{" "}
           </div>
         </div>

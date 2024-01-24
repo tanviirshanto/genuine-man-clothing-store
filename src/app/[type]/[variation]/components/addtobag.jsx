@@ -32,7 +32,7 @@ function AddToBag({ cartItem, price}) {
     >
       <Favourites cartItem={cartItem} user_id={ user_id } />
       <button
-        className=" bg-black text-slate-50 py-2  px-14 w-[85%] mr-5"
+        className=" bg-black text-slate-50 md:py-2  px-14 w-[85%] md:mr-5 mr-2   "
         onClick={addToCartItems}
       >
         Add to Bag

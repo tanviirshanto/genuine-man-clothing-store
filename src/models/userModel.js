@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
   },
+  contact: {
+    type:String
+  },
+  address: {
+    type:String
+  },
 
   role: {
     enum: ["admin", "user"],

@@ -18,6 +18,7 @@ import MainImg from "../../components/mainImg";
 import  axiosInstance  from "@/utils/axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useSession } from "next-auth/react";
+import axios from "axios";
 
 // export async function GetProduct(prodId) {
 //   connect();
@@ -37,10 +38,11 @@ function ViewProduct({ params }: any) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/product/${params.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data)
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/product/${params.id}`);
+        const data = response.data;
+
         setItem(data.p);
         setLoading(false);
         //initially we set cart item from the item loaded
@@ -55,12 +57,18 @@ function ViewProduct({ params }: any) {
           price: data.p.price,
           size: data.p.sizes[2].size,
           variation: data.p.variation,
-          clothtype:data.p.clothtype
+          clothtype: data.p.clothtype
         });
         // console.log(data);
         // console.log(data.p.color);
-      });
     
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle the error, e.g., set an error state or show an error message
+      };
+    }
+    fetchData();
     
   }, []);
 
@@ -100,12 +108,27 @@ function ViewProduct({ params }: any) {
 
       <div className="">
         <div className="gap-3 md:mx-14">
-          <div className="flex flex-col md:flex-row md:max-h-fit md:justify-between md:gap-14 ">
-            <div className="ml-7 md:hidden">
-              <p className="underline md:hidden mb-8 text-sm">Clothings</p>
-              <p className="font-bold text-lg pb-2">{params.name}</p>
+          <div className="flex flex-col md:flex-row md:justify-between md:gap-14 ">
+            <div className="ml-4 mt-4 md:ml-7 md:hidden">
+              <div className="flex gap-2">
+                {" "}
+                <p className="underline md:hidden mb-8 text-sm">
+                  {item.clothtype} 
+                </p>
+                {"/"}
+                <p className="underline md:hidden mb-8 text-sm">
+                  {item.variation}
+                </p>
+              </div>
+
+              <p
+                className="font-bold 
+              text-md md:text-lg pb-2"
+              >
+                {item?.name}
+              </p>
               <Star />
-              <p className="font-bold pt-2">$79.50</p>
+              <p className="font-bold pt-2">${item.price}</p>
               <p className="text-[10px] text-slate-500 pt-2">
                 Or 4 installments of $19.88 by afterpay
               </p>
@@ -148,6 +171,7 @@ function ViewProduct({ params }: any) {
                 <div className="ml-7 md:ml-0 mr-5 mb-5">
                   <SizeChart
                     id={params.id}
+                    sizes={item.sizes}
                     setCartItem={setCartItem}
                     cartItem={cartItem}
                   />
@@ -169,7 +193,7 @@ function ViewProduct({ params }: any) {
                 </div>
               </div>
 
-              <AddToBag price={item.price} cartItem={cartItem}  />
+              <AddToBag price={item.price} cartItem={cartItem} />
             </div>
           </div>
         </div>

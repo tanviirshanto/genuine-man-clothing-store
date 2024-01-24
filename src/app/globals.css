@@ -30,10 +30,14 @@ width: 300px;
 
 .sbar {
     width: 0%;
-    height: 100%;
+    
     background: black;
     box-shadow: -10px 0 15px -5px rgba(115,115,115,0.75);
     
+  }
+
+  .sbarOpen{
+width: 100%;
   }
 
   .sidebarhover{
@@ -87,11 +91,10 @@ left:0
 
 
 .cartzindex{
-    z-index:40 ;
+    z-index:45 ;
+    
 }
-.sidebarz{
-z-index: 11;
-}
+
 
 
 
@@ -117,11 +120,12 @@ z-index: 11;
 
 /* Scrollable content */
 .scroll-content {
-    width: calc(100% - 20px);
+    
     /* Adjust width to account for margin */
     height: calc(100% - 20px);
     /* Adjust height to account for margin */
     padding: 8px;
+    margin-right: 10px;
     /* Padding to separate content from scrollbar */
     box-sizing: border-box;
     overflow-y: hidden;
@@ -165,7 +169,7 @@ z-index: 11;
     position: -webkit-sticky;
     position: sticky; 
     top: 0;
-    z-index: 9999
+    z-index: 40
 }
 
 .forFavourite{
@@ -174,3 +178,7 @@ z-index: 11;
                     left: '50%';
                     transform: 'translateX(-50%)';
 }
+
+
+
+

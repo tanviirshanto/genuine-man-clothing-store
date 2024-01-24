@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from './navbar/navbar'
-import {GlobalContextProvider} from './Context/store'
+import { GlobalContextProvider } from './Context/store'
+import Footer from "./footer/footer";
+
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,12 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <script src="http://localhost:8097" async/>
+     
       <body className={inter.className}>
         <GlobalContextProvider>
           <Navbar />
           {children}
+          <Footer />
         </GlobalContextProvider>
+        <script src="../path/to/flowbite/dist/flowbite.min.js" async></script>
       </body>
     </html>
   );
