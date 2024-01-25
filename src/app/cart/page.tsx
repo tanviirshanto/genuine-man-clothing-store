@@ -70,7 +70,7 @@ function Cart() {
       };
       fetchData();
     }
-  }, [user_id]);
+  }, [user_id, data]);
 
   useEffect(() => {
     calculateTotal();
