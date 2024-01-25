@@ -8,9 +8,8 @@ export const getCartItems = async ({ user_id }) => {
 
 
 export const deleteCartItem = async (postData) => {
-  let response = await fetch(
-    `http://localhost:3000/api/cart/removecartitem?userid=${postData.userid}&id=${postData.id}`,
-    { method: "delete" }
+  let response = await axios.delete(
+    `/api/cart/removecartitem?userid=${postData.userid}&id=${postData.id}`
   )
 
   response = await response.json();

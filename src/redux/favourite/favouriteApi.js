@@ -17,9 +17,8 @@ export const addFavourite = async (postData) => {
 
   
  export const deleteFavourite = async (postData) => {
-   let response = await fetch(
-     `http://localhost:3000/api/favourite/removefavourite?userid=${postData.userid}&id=${postData.id}`,
-     { method: "delete" }
+   let response = await axios.delete(
+     `/api/favourite/removefavourite?userid=${postData.userid}&id=${postData.id}`
    );
 
    response = await response.json();
