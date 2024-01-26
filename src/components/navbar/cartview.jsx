@@ -99,12 +99,12 @@ const forcartview = "transition-all w-[550px] duration-500";
         </button>
       </div>
       <div
-        className={`cartzindex sbar md:group-hover:w-[550px]  group-hover:transition-all h-screen absolute group-hover:duration-500 right-0 top-0 overflow-hidden ${
+        className={`cartzindex sbar md:group-hover:w-[550px]  group-hover:transition-all h-[100vh] absolute group-hover:duration-500 right-0 top-0 overflow-hidden ${
           isOpen ? "sbarOpen" : ""
         }`}
       >
-        <div className="relative  pt-8 flex flex-col justify-between text-slate-50 h-[95%] pl-5 pr-1 object-contain">
-          <div className="text-slate-50 ">
+        <div className="relative  pt-8 flex flex-col  text-slate-50  pl-5 pr-1 object-contain">
+          <div className="text-slate-50 h-[75vh]">
             <div className="flex justify-center items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -130,11 +130,11 @@ const forcartview = "transition-all w-[550px] duration-500";
             </div>
           </div>
           <div className="w-[90%] items-end ">
-            <div className="flex justify-between font-semibold ">
+            <div className="flex justify-between font-semibold mb-2 ">
               <h1>Estimated Total</h1>
               <h1>${session ? total_amount : ""}</h1>
             </div>
-            <button className="bg-slate-50 text-slate-950 w-full py-3 font-bold">
+            <button className="bg-slate-50 text-slate-950 w-full py-3 font-bold mb-5">
               <a href={`/cart`}>Go to Order Page</a>{" "}
             </button>{" "}
           </div>
