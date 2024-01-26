@@ -10,7 +10,7 @@ function SidebarItem({ item, user_id }) {
   
   const { _id, id, variation, clothtype, name, image, price, size, quantity } =
      item;
-
+console.log(item)
   const postData = {
     userid: user_id,
     id:item.id,
@@ -21,6 +21,7 @@ function SidebarItem({ item, user_id }) {
     dispatch(removeCartItem(postData));
   }
 
+  
   // console.log(item)
   return (
     <div className="pr-2 md:w-[400px]">
@@ -37,7 +38,7 @@ function SidebarItem({ item, user_id }) {
           </a>
         </div>
         <div className="flex flex-col text-wrap w-[60%] text-sm">
-          <a href={`/${clothtype}/${variation}/${name}/${id}`}>
+          <a href={`/${clothtype}/${variation}/${name}/${id}`} >
             <h1 className="overflow-clip hover:text-blue-500 ">{item.name}</h1>
           </a>
           <h1 className="text-slate-400 mt-1">Take a hint - Black</h1>

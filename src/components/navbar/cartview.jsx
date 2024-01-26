@@ -69,7 +69,8 @@ const [isOpen, setIsOpen] = useState(false);
 
     if (!isLoading && !isError && items?.length > 0) {
       content = items?.map((i) =>
-              {
+      {
+        console.log(i)
                 //  console.log(i);
                 return <SidebarItem item={i} key={i._id} user_id={user_id} />;})
     }

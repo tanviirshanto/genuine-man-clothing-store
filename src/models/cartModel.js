@@ -19,16 +19,23 @@ const cartSchema = new mongoose.Schema({
       },
 
       name: String,
-
+      clothtype: {
+        type: String,
+        required: [true, "Please provide a type(Shirt/Pant/...)"],
+      },
+      variation: {
+        type: String,
+        required: [true, "Please provide a type(tshirt-polo-)"],
+      },
       image: String,
-      
+
       quantity: {
         type: Number,
         required: true,
       },
       size: String,
       shippingMethod: String,
-      price:Number
+      price: Number,
     },
   ],
   total_amount: {
