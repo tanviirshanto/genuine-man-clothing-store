@@ -21,7 +21,7 @@ export const addFavourite = async (postData) => {
      `/api/favourite/removefavourite?userid=${postData.userid}&id=${postData.id}`
    );
 
-   response = await response.json();
+   response = await response.data;
   return response
    // console.log(response);
   // if (response.success) {

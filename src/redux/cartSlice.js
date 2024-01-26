@@ -1,10 +1,7 @@
 import Quantity from "@/app/[type]/[variation]/components/quantity";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import {
-  deleteCartItem,
-  getCartItems
-} from "./cartApi";
+import { deleteCartItem, getCartItems, addToCart } from "./cartApi";
 
 
 const initialState = {
@@ -25,6 +22,14 @@ export const fetchCartItems = createAsyncThunk(
   }
 );
 
+export const createCartItem = createAsyncThunk(
+  "cartItems/createCartItem",
+  async (postData) => {
+    const cartItem = await addToCart(postData);
+    //   console.log(data)
+    return cartItem;
+  }
+);
 
 export const removeCartItem = createAsyncThunk(
   "cart/removeCartItem",
@@ -87,23 +92,51 @@ const existingItem = state.data.items.find(
       })
 
 
+      .addCase(createCartItem.pending, (state) => {
+        state.isError = false;
+        state.isLoading = true;
+      })
+      .addCase(createCartItem.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        console.log(action.payload);
+        const itemToAdd =
+          action.payload && action.payload.items ? action.payload.items : [];
+        console.log(itemToAdd);
+
+        //   console.log(itemToAdd);
+        if (itemToAdd !== null) {
+          state.data.items = itemToAdd
+          state.data.total_amount = state.data.items.reduce(
+            (total, item) => total + item.quantity * item.price,
+            0
+          );
+        }
+      })
+      .addCase(createCartItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.error?.message;
+      })
+
+
       .addCase(removeCartItem.pending, (state) => {
         state.isError = false;
         state.isLoading = true;
       })
       .addCase(removeCartItem.fulfilled, (state, action) => {
-        console.log(action);
+        console.log(action.payload);
         state.isError = false;
         state.isLoading = false;
         state.data.items = state.data.items.filter(
           (t) => t.id !== action.meta.arg.id
         );
 
+         
         state.data.total_amount = state.data.items.reduce(
           (total, item) => total + item.quantity * item.price,
           0
         );
-
       })
       .addCase(removeCartItem.rejected, (state, action) => {
         state.isLoading = false;

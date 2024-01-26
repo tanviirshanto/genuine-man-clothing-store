@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addtocart } from "@/redux/cartSlice";
+import { addtocart, createCartItem } from "@/redux/cartSlice";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Favourites from "./favourites";
@@ -20,9 +20,11 @@ function AddToBag({ cartItem, price}) {
     dispatch(addtocart({ cartItem, price, session }));
     // try {
     if(session){
-      const response = await axios.post("/api/cart/additemtocart", postData);
-    // console.log("Response:", response);
-      console.log("Item added to cart successfully:", response.data);}
+    //   const response = await axios.post("/api/cart/additemtocart", postData);
+    // // console.log("Response:", response);
+      //   console.log("Item added to cart successfully:", response.data);
+      dispatch(createCartItem(postData));
+    }
   }
 
   return (

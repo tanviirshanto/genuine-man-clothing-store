@@ -45,6 +45,10 @@ export async function DELETE(request: NextRequest, response: NextResponse) {
     return NextResponse.json({
       success: true,
       message: "Item removed from Cart",
+      data: {
+        updatedCart,
+        totalAmount,
+      },
     });
   } catch (error) {
     console.error("Error removing item from Cart", error);
